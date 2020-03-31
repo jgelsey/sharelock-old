@@ -48,7 +48,7 @@ passport.deserializeUser(function(user, done) {
 
 var app = express();
 
-console.log("hello");
+console.log("hello xyz");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
