@@ -33,10 +33,10 @@ var strategy = new Auth0Strategy({
     // accessToken is the token to call Auth0 API (not needed in the most cases)
     // extraParams.id_token has the JSON Web Token
     // profile has all the information from the user
-    console.log("hello -- profile: ",profile);
-    console.log("done");
-    console.log("domain: ",process.env.AUTH0_DOMAIN,"clientID: ",process.env.AUTH0_CLIENT_ID, "callbackURL: ", process.env.AUTH0_CALLBACK);
-	console.log("done");
+ //    console.log("hello -- profile: ",profile);
+ //    console.log("done");
+ //    console.log("domain: ",process.env.AUTH0_DOMAIN,"clientID: ",process.env.AUTH0_CLIENT_ID, "callbackURL: ", process.env.AUTH0_CALLBACK);
+	// console.log("done");
 
     return done(null, profile);
 });
@@ -51,6 +51,9 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
   done(null, user);
 });
+
+console.log("user: ",user);
+console.log("done");
 
 var app = express();
 
