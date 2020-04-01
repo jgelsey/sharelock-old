@@ -151,6 +151,8 @@ app.get('/callback',
         else {
         	console.log("req.user: ",req.user);
 			console.log("done");
+			console.log("req.openid.user",req.openid.user);
+			console.log("done");
 			// console.log("res");
 			// console.log("done"); 
             var url = req.session.bookmark || '/';
@@ -181,6 +183,8 @@ app.post('/create',
 //     }
 //     next();
 // });
+
+
 
 app.get(/^\/(\w{1,10})\/(.+)$/,
     v1_get());
