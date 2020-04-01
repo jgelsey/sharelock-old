@@ -147,10 +147,10 @@ app.get('/callback',
         if (!req.user)
             res.send(403);
         else {
-        	console.log("req: ",req);
+        	console.log("req.user: ",req.user);
 			console.log("done");
-			console.log("res");
-			console.log("done");
+			// console.log("res");
+			// console.log("done"); 
             var url = req.session.bookmark || '/';
             delete req.session.bookmark;
             res.redirect(url);
