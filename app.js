@@ -35,7 +35,7 @@ var strategy = new Auth0Strategy({
     console.log("hello -- profile: ",profile);
     console.log("done");
     console.log("foo");
-    // console.log("domain: ",domain,"clientID",clientID);
+    console.log("domain: ",domain,"clientID",clientID);
     // console.log("done")
 
     return done(null, profile);
