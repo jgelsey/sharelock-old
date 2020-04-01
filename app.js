@@ -41,7 +41,7 @@ var strategy = new Auth0Strategy({
  //    console.log("domain: ",process.env.AUTH0_DOMAIN,"clientID: ",process.env.AUTH0_CLIENT_ID, "callbackURL: ", process.env.AUTH0_CALLBACK);
 	// console.log("done");
 
-    return done(null, profile,accessToken);
+    return done(null, profile);
 });
 
 passport.use(strategy);
@@ -54,6 +54,8 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
   done(null, user);
 });
+
+console.log("passport object: ", passport)
 
 
 var app = express();
@@ -353,7 +355,7 @@ function v1_get() {
 // 	//got the user profile
 
         if (req.user && req.user.provider !== 'twitter' && !req.user._json.email_verified) {
-        	console.log("hello -- req.user ", req.user, "accessToken: ",accessToken );
+        	console.log("hello -- req.user ", req.user);
         	console.log("done");
             return res.render('invalid', { details: 'Your e-mail has not been verified xxyyyz'});
         }
