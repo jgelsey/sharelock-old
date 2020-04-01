@@ -34,9 +34,9 @@ var strategy = new Auth0Strategy({
     // profile has all the information from the user
     console.log("hello -- profile: ",profile);
     console.log("done");
-    console.log("foo");
-    console.log("domain: ",domain,"clientID",clientID);
-    console.log("done")
+    // console.log("foo");
+    // console.log("domain: ",domain,"clientID",clientID);
+    // console.log("done")
 
     return done(null, profile);
 });
@@ -327,8 +327,8 @@ function v1_get() {
 
 
         if (req.user && req.user.provider !== 'twitter' && !req.user._json.email_verified) {
-        	console.log("hello -- req.user ", req.user);
-        	console.log("done");
+        	// console.log("hello -- req.user ", req.user);
+        	// console.log("done");
             return res.render('invalid', { details: 'Your e-mail has not been verified xxyyyz'});
         }
 
