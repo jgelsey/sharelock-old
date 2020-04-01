@@ -38,9 +38,6 @@ var strategy = new Auth0Strategy({
 
 passport.use(strategy);
 
-console.log("hello -- user from Auth0 strategy: ", user);
-
-
 // This is not a best practice, but we want to keep things simple for now
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -102,6 +99,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public'), { index: false, redirect: false }));
 app.use(contextualLocals);
+
+console.log("hello -- passport from Auth0 strategy:", passport);
+
 
 app.get('/', function (req, res, next) {
     res.render('home.html');
