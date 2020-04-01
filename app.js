@@ -52,8 +52,6 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-console.log("user: ",user);
-console.log("done");
 
 var app = express();
 
@@ -149,6 +147,8 @@ app.get('/callback',
         if (!req.user)
             res.send(403);
         else {
+        	console.log("req.user: ",req.user);
+			console.log("done");
             var url = req.session.bookmark || '/';
             delete req.session.bookmark;
             res.redirect(url);
