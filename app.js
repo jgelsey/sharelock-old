@@ -323,6 +323,7 @@ function v1_get() {
 
         if (req.user && req.user.provider !== 'twitter' && !req.user._json.email_verified) {
         	console.log("hello -- req.user ", req.user);
+        	console.log("done");
             return res.render('invalid', { details: 'Your e-mail has not been verified xxyyyz'});
         }
 
