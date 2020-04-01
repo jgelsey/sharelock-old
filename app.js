@@ -100,7 +100,7 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public'), { index: false, redirect: false }));
 app.use(contextualLocals);
 
-console.log("hello -- passport from Auth0 strategy: ", passport);
+// console.log("hello -- passport from Auth0 strategy: ", passport);
 
 
 app.get('/', function (req, res, next) {
@@ -322,7 +322,7 @@ function v1_get() {
 
 
         if (req.user && req.user.provider !== 'twitter' && !req.user._json.email_verified) {
-        	console.log("hello -- req.user._json.email_verified: ", req.user._json.email_verified);
+        	console.log("hello -- req.user ", req.user);
             return res.render('invalid', { details: 'Your e-mail has not been verified xxyyyz'});
         }
 
