@@ -41,7 +41,7 @@ var strategy = new Auth0Strategy({
  //    console.log("domain: ",process.env.AUTH0_DOMAIN,"clientID: ",process.env.AUTH0_CLIENT_ID, "callbackURL: ", process.env.AUTH0_CALLBACK);
 	// console.log("done");
 
-    return done(null, profile);
+    return done(null, profile,accessToken);
 });
 
 passport.use(strategy);
@@ -335,6 +335,22 @@ function v1_get() {
 
         logger.info({ user: req.user ? req.user._json : undefined }, 'sharelock access request');
 
+//get user profile
+        var request = require("request");
+
+		var options = {
+		  method: 'GET',
+		  url: 'https://dev-asqfrzuv.auth0.com/api/v2/users/'+user.id,
+		  headers: {authorization: accessToken}
+		};
+
+		request(options, function (error, response, body) {
+		  if (error) throw new Error(error);
+
+		  console.log("User Porfile: ", body);
+		});
+
+	//got the user profile
 
         if (req.user && req.user.provider !== 'twitter' && !req.user._json.email_verified) {
         	console.log("hello -- req.user ", req.user );
