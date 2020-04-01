@@ -34,6 +34,9 @@ var strategy = new Auth0Strategy({
     // profile has all the information from the user
     console.log("hello -- profile: ",profile);
     console.log("done");
+    console.log("domain: ",domain,"clientID",clientID);
+    console.log("done")
+
     return done(null, profile);
 });
 
