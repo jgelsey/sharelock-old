@@ -55,7 +55,8 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-console.log("passport object: ", passport)
+console.log("passport object: ", passport);
+console.log("done");
 
 
 var app = express();
