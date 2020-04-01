@@ -100,7 +100,7 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public'), { index: false, redirect: false }));
 app.use(contextualLocals);
 
-console.log("hello -- passport from Auth0 strategy:", passport);
+console.log("hello -- passport from Auth0 strategy: ", passport);
 
 
 app.get('/', function (req, res, next) {
