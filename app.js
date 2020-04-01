@@ -35,7 +35,7 @@ var strategy = new Auth0Strategy({
     // extraParams.id_token has the JSON Web Token
     // profile has all the information from the user
     console.log("hello - profile: ",profile);
-    console.log("done");
+    console.log("done"); 
  //    console.log("hello -- profile: ",profile);
  //    console.log("done");
  //    console.log("domain: ",process.env.AUTH0_DOMAIN,"clientID: ",process.env.AUTH0_CLIENT_ID, "callbackURL: ", process.env.AUTH0_CALLBACK);
