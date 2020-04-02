@@ -39,7 +39,7 @@ var provider_friendly_name = {
 	//   console.log("done");
 	// });
 
-var request = require("http");
+var request = require("https");
 
 var options = {
   method: 'POST',
