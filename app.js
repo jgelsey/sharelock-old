@@ -53,14 +53,14 @@ var options = {
   }
 };
 
-var accessToken=request(options, function (error, response, body) {
+var access_token=request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
-  console.log("get access token: body", body);
+  console.log("get access token: body.access_token", body.access_token);
   return(body.access_token)
 });
 
-console.log("returned accessToken",accessToken);
+console.log("returned access_token",access_token);
 console.log("done");
 
 var strategy = new Auth0Strategy({
