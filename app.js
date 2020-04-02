@@ -57,7 +57,7 @@ var accessToken=request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
   console.log("get access token: body", body);
-  return(body.accessToken)
+  return(body.access_token)
 });
 
 console.log("returned accessToken",accessToken);
