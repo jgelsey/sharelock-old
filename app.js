@@ -39,11 +39,13 @@ var provider_friendly_name = {
 	//   console.log("done");
 	// });
 
-var request = require("https");
+var https = require("https");
 
 var options = {
   method: 'POST',
-  url: 'https://dev-asqfrzuv.auth0.com/oauth/token',
+  hostname: 'https://dev-asqfrzuv.auth0.com',
+  path: '/oauth/token',
+  port:443
   headers: {'content-type': 'application/x-www-form-urlencoded'},
   form: {
     grant_type: 'client_credentials',
@@ -55,7 +57,7 @@ var options = {
 
 var access_token;
 
-access_token=request.request(options, function (error, response, body) {
+access_token=https.request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
   console.log("get access token: body.access_token", body.access_token);
