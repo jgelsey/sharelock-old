@@ -34,9 +34,9 @@ foo=request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
   console.log("API call body is: ",body);
-  console.log("API call response is: ",response);
+  console.log("API call response.body is: ",response.body);
 
-  cb(body);
+  resolve(body);
 });
 
 console.log("foo is: ",foo);
