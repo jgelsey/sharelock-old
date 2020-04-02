@@ -55,12 +55,11 @@ var options = {
 
 var access_token;
 
-request(options, function (error, response, body) {
+request(options, function (error, response, body,access_token) {
   if (error) throw new Error(error);
 
   console.log("get access token: body.access_token", body.access_token);
   access_token=body.access_token;
-  return(access_token);
 });
 
 console.log("returned access_token",access_token);
