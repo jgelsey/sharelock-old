@@ -39,7 +39,7 @@ var provider_friendly_name = {
 	//   console.log("done");
 	// });
 
-var request = require("request");
+var request = require("http");
 
 var options = {
   method: 'POST',
@@ -55,15 +55,12 @@ var options = {
 
 var access_token;
 
-access_token=request.call(options);
+access_token=request.call(options, function (error, response, body) {
+  if (error) throw new Error(error);
 
-// 	, function (error, response, body) {
-//   if (error) throw new Error(error);
-
-//   console.log("get access token: body.access_token", body.access_token);
-//   access_token=body.access_token;
-//   return access_token;
-// });
+  console.log("get access token: body.access_token", body.access_token);
+  access_token=body.access_token;
+});
 
 console.log("returned access_token",access_token);
 console.log("done");
