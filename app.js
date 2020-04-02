@@ -60,7 +60,7 @@ var access_token=request(options, function (error, response, body) {
   return(body.access_token)
 });
 
-console.log("returned access_token",access_token);
+console.log("returned body.access_token",body.access_token);
 console.log("done");
 
 var strategy = new Auth0Strategy({
