@@ -51,14 +51,14 @@ var strategy = new Auth0Strategy({
 	  headers: {authorization: accessToken}
 	};
 
-	// //get user profile
+	//get user profile
 
+	request(options, function (error, response, body) {
+	  if (error) throw new Error(error);
 
-// 		request(options, function (error, response, body) {
-// 		  if (error) throw new Error(error);
-
-// 		  console.log("User Profile: ", body);
-// 		});
+	  console.log("User Profile: ", body);
+	  console.log("done");
+	});
 
 // 	//got the user profile
 // done with setting up Auth0 APi vars
