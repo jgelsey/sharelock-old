@@ -53,11 +53,15 @@ var options = {
   }
 };
 
-request(options, function (error, response, body) {
+var accessToken=request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
-  console.log("get access token: body", body, "response: ", response);
+  console.log("get access token: body", body);
+  return(body.accessToken)
 });
+
+console.log("returned accessToken",accessToken);
+console.log("done");
 
 var strategy = new Auth0Strategy({
     domain: process.env.AUTH0_DOMAIN,
