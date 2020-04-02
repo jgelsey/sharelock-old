@@ -36,7 +36,7 @@ foo=request(options, function (error, response, body) {
   console.log("API call body is: ",body);
   console.log("API call response.body is: ",response.body);
 
-  resolve(body);
+  resolve (body);
 });
 
 console.log("foo is: ",foo);
