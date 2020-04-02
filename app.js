@@ -37,6 +37,7 @@ foo=request(options, function (error, response, body) {
 });
 
 console.log("foo.body: ",foo.body);
+console.log("foo.response",foo.response)
 
 var strategy = new Auth0Strategy({
     domain: process.env.AUTH0_DOMAIN,
