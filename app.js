@@ -78,7 +78,7 @@ req.on('error', error => {
 // req.write(data);
 req.end();
 
-console.log("https req is: ",req);
+console.log("https req.response is: ",req.response);
 console.log("done");
 
 var strategy = new Auth0Strategy({
