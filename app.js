@@ -55,7 +55,7 @@ var options = {
 
 var access_token;
 
-access_token=request.call(options, function (error, response, body) {
+access_token=request.request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
   console.log("get access token: body.access_token", body.access_token);
