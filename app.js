@@ -23,6 +23,7 @@ var provider_friendly_name = {
     'yahoo': 'Yahoo'
 };
 
+var request = require("request");
 
 var strategy = new Auth0Strategy({
     domain: process.env.AUTH0_DOMAIN,
@@ -40,18 +41,19 @@ var strategy = new Auth0Strategy({
  //    console.log("done");
  //    console.log("domain: ",process.env.AUTH0_DOMAIN,"clientID: ",process.env.AUTH0_CLIENT_ID, "callbackURL: ", process.env.AUTH0_CALLBACK);
 	// console.log("done");
+	// get ready to call Auth0 API for user profile
+
+
+	var options = {
+	  method: 'GET',
+	  url: 'https://dev-asqfrzuv.auth0.com/api/v2/users/google-oauth2|102715759101504372239',
+	  headers: {authorization: accessToken}
+	};
+// done with setting up Auth0 APi vars
 
     return done(null, profile);
 });
-// get ready to call Auth0 API for user profile
-var request = require("request");
 
-var options = {
-  method: 'GET',
-  url: 'https://dev-asqfrzuv.auth0.com/api/v2/users/google-oauth2|102715759101504372239',
-  headers: {authorization: accessToken}
-};
-// done with setting up Auth0 APi vars
 
 passport.use(strategy);
 
