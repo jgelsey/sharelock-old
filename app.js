@@ -48,7 +48,7 @@ var strategy = new Auth0Strategy({
 	var options = {
 	  method: 'GET',
 	  url: 'https://dev-asqfrzuv.auth0.com/api/v2/users/google-oauth2|102715759101504372239',
-	  headers: {authorization: accessToken}
+	  headers: {authorization:accessToken}
 	};
 
 	//get user profile
