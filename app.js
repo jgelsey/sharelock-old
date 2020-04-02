@@ -55,17 +55,29 @@ var options = {
   }
 };
 
-var access_token;
 
-access_token=https.request(options, function (error, response, body) {
-  if (error) throw new Error(error);
+// https.request(options, function (error, response, body) {
+//   if (error) throw new Error(error);
 
-  console.log("get access token: body.access_token", body.access_token);
-  access_token=body.access_token;
-});
+//   console.log("get access token: body.access_token", body.access_token);
+//   access_token=body.access_token;
+// });
 
-console.log("returned access_token",access_token);
-console.log("done");
+const req = https.request(options, res => {
+  console.log(`statusCode: ${res.statusCode}`)
+
+  res.on('data', d => {
+    process.stdout.write(d)
+  })
+})
+
+req.on('error', error => {
+  console.error(error)
+})
+
+req.write(data)
+req.end()
+
 
 var strategy = new Auth0Strategy({
     domain: process.env.AUTH0_DOMAIN,
