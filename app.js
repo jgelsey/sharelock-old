@@ -45,7 +45,7 @@ var options = {
   method: 'POST',
   hostname: 'https://dev-asqfrzuv.auth0.com',
   path: '/oauth/token',
-  port:443
+  port:443,
   headers: {'content-type': 'application/x-www-form-urlencoded'},
   form: {
     grant_type: 'client_credentials',
