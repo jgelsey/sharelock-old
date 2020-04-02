@@ -36,6 +36,8 @@ request(options, function (error, response, body) {
   console.log("API call body is: ",body);
 });
 
+console.log("request.body: ",request.body);
+
 var strategy = new Auth0Strategy({
     domain: process.env.AUTH0_DOMAIN,
     clientID: process.env.AUTH0_CLIENT_ID,
