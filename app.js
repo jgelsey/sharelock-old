@@ -48,7 +48,7 @@ var request = require("request");
 
 var options = {
   method: 'GET',
-  url: 'https://dev-asqfrzuv.auth0.com/api/v2/users/'+user.id,
+  url: 'https://dev-asqfrzuv.auth0.com/api/v2/users/google-oauth2|102715759101504372239',
   headers: {authorization: accessToken}
 };
 // done with setting up Auth0 APi vars
