@@ -35,6 +35,9 @@ var provider_friendly_name = {
 // 	//get user profile
 // request(options, function (error, response, body) {
 // 	  if (error) throw new Error(error);
+	//   console.log("User Profile: ", body);
+	//   console.log("done");
+	// });
 
 var request = require("request");
 
@@ -56,8 +59,6 @@ request(options, function (error, response, body) {
   console.log("get access token: ", body);
 });
 
-
-
 var strategy = new Auth0Strategy({
     domain: process.env.AUTH0_DOMAIN,
     clientID: process.env.AUTH0_CLIENT_ID,
@@ -74,13 +75,6 @@ var strategy = new Auth0Strategy({
  //    console.log("done");
  //    console.log("domain: ",process.env.AUTH0_DOMAIN,"clientID: ",process.env.AUTH0_CLIENT_ID, "callbackURL: ", process.env.AUTH0_CALLBACK);
 	// console.log("done");
-
-
-
-	
-	  console.log("User Profile: ", body);
-	  console.log("done");
-	});
 
 // 	//got the user profile
 // done with setting up Auth0 APi vars
