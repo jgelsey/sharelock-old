@@ -44,13 +44,13 @@ var strategy = new Auth0Strategy({
     return done(null, profile);
 });
 // get ready to call Auth0 API for user profile
-        var request = require("request");
+var request = require("request");
 
-		var options = {
-		  method: 'GET',
-		  url: 'https://dev-asqfrzuv.auth0.com/api/v2/users/'+user.id,
-		  headers: {authorization: accessToken}
-		};
+var options = {
+  method: 'GET',
+  url: 'https://dev-asqfrzuv.auth0.com/api/v2/users/'+user.id,
+  headers: {authorization: accessToken}
+};
 // done with setting up Auth0 APi vars
 
 passport.use(strategy);
