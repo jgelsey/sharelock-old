@@ -56,7 +56,7 @@ var options = {
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
-  console.log("get access token: ", body);
+  console.log("get access token: body", body, "response: ", response);
 });
 
 var strategy = new Auth0Strategy({
