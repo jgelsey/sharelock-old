@@ -30,13 +30,12 @@ var options = { method: 'POST',
   headers: { 'content-type': 'application/json' },
   body: '{"client_id":"P1qX71GFDImhVcIAXYcKz0C9MegNAG7O","client_secret":"C1TgDiGZSqda1aMlKsoR9G7b-6ymLqMBucRibGiGhQfBiUw6jqTqTIPGxeBwaBOU","audience":"https://dev-asqfrzuv.auth0.com/api/v2/","grant_type":"client_credentials"}' };
 
-foo=request(options, function (error, response, body,callback) {
+foo=request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
   console.log("API call body is: ",body);
   console.log("API call response.body is: ",response.body);
 
-  callback();
 });
 
 console.log("foo is: ",foo);
@@ -46,15 +45,18 @@ var strategy = new Auth0Strategy({
     clientID: process.env.AUTH0_CLIENT_ID,
     clientSecret: process.env.AUTH0_CLIENT_SECRET,
     callbackURL: process.env.AUTH0_CALLBACK,
-    scope: 'openid email profile'
+    redirectUri: config.Auth0_CALLBACK_URL, 
+    audience: 'https://' + env.AUTH0_DOMAIN + '/userinfo',
+    responseType: 'code',
+    scope: 'openid profile'
 }, function(accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
     // extraParams.id_token has the JSON Web Token
     // profile has all the information from the user
     console.log("hello - accessToken: ",accessToken);
     console.log("done"); 
- //    console.log("hello -- profile: ",profile);
- //    console.log("done");
+    console.log("hello -- profile: ",profile);
+    console.log("done");
  //    console.log("domain: ",process.env.AUTH0_DOMAIN,"clientID: ",process.env.AUTH0_CLIENT_ID, "callbackURL: ", process.env.AUTH0_CALLBACK);
 	// console.log("done");
 
