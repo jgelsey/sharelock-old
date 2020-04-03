@@ -38,14 +38,14 @@ foo=request(options, function (error, response, body) {
 
 });
 
-console.log("foo is: ",foo);
+// console.log("foo is: ",foo);
 
 var strategy = new Auth0Strategy({
     domain: process.env.AUTH0_DOMAIN,
     clientID: process.env.AUTH0_CLIENT_ID,
     clientSecret: process.env.AUTH0_CLIENT_SECRET,
     callbackURL: process.env.AUTH0_CALLBACK,
-    redirectUri: config.Auth0_CALLBACK_URL, 
+    // redirectUri: config.Auth0_CALLBACK_URL, 
     audience: 'https://' + env.AUTH0_DOMAIN + '/userinfo',
     responseType: 'code',
     scope: 'openid profile'
