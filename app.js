@@ -23,20 +23,20 @@ var provider_friendly_name = {
     'yahoo': 'Yahoo'
 };
 	
-var request = require("request");
+// var request = require("request");
 
-var options = { method: 'POST',
-  url: 'https://dev-asqfrzuv.auth0.com/oauth/token',
-  headers: { 'content-type': 'application/json' },
-  body: '{"client_id":"P1qX71GFDImhVcIAXYcKz0C9MegNAG7O","client_secret":"C1TgDiGZSqda1aMlKsoR9G7b-6ymLqMBucRibGiGhQfBiUw6jqTqTIPGxeBwaBOU","audience":"https://dev-asqfrzuv.auth0.com/api/v2/","grant_type":"client_credentials"}' };
+// var options = { method: 'POST',
+//   url: 'https://dev-asqfrzuv.auth0.com/oauth/token',
+//   headers: { 'content-type': 'application/json' },
+//   body: '{"client_id":"P1qX71GFDImhVcIAXYcKz0C9MegNAG7O","client_secret":"C1TgDiGZSqda1aMlKsoR9G7b-6ymLqMBucRibGiGhQfBiUw6jqTqTIPGxeBwaBOU","audience":"https://dev-asqfrzuv.auth0.com/api/v2/","grant_type":"client_credentials"}' };
 
-foo=request(options, function (error, response, body) {
-  if (error) throw new Error(error);
+// foo=request(options, function (error, response, body) {
+//   if (error) throw new Error(error);
 
-  console.log("API call body is: ",body);
-  console.log("API call response.body is: ",response.body);
+//   console.log("API call body is: ",body);
+//   console.log("API call response.body is: ",response.body);
 
-});
+// });
 
 // console.log("foo is: ",foo);
 
@@ -65,6 +65,8 @@ var strategy = new Auth0Strategy({
 
     return done(null, profile);
 });
+
+console.log("hello - strategy.profile: ",strategy.profile)
 
 
 passport.use(strategy);
