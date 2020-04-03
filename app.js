@@ -30,7 +30,7 @@ var options = { method: 'POST',
   headers: { 'content-type': 'application/json' },
   body: '{"client_id":"P1qX71GFDImhVcIAXYcKz0C9MegNAG7O","client_secret":"C1TgDiGZSqda1aMlKsoR9G7b-6ymLqMBucRibGiGhQfBiUw6jqTqTIPGxeBwaBOU","audience":"https://dev-asqfrzuv.auth0.com/api/v2/","grant_type":"client_credentials"}' };
 
-foo=request(options, function (error, response, body) {
+foo=request(options, function (error, response, body,callback) {
   if (error) throw new Error(error);
 
   console.log("API call body is: ",body);
