@@ -46,7 +46,7 @@ var strategy = new Auth0Strategy({
     clientSecret: process.env.AUTH0_CLIENT_SECRET,
     callbackURL: process.env.AUTH0_CALLBACK,
     redirectUri: process.env.Auth0_CALLBACK_URL, 
-    audience: 'https://' + process.env.AUTH0_DOMAIN + '/userinfo',
+    // audience: 'https://' + process.env.AUTH0_DOMAIN + '/userinfo',
     responseType: 'code',
     scope: 'openid',
     scope:'profile',
