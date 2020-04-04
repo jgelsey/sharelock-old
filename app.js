@@ -79,7 +79,8 @@ var strategy = new Auth0Strategy({
 	  	if (error) throw new Error(error);
 
 		console.log("body with prfile is: ",body);
-	});
+		};
+	};
 
 
  //    console.log("domain: ",process.env.AUTH0_DOMAIN,"clientID: ",process.env.AUTH0_CLIENT_ID, "callbackURL: ", process.env.AUTH0_CALLBACK);
