@@ -77,7 +77,7 @@ var strategy = new Auth0Strategy({
 
 			  var options = { method: 'GET',
 			  	url: 'https://dev-asqfrzuv.auth0.com/userinfo', 
-			  	headers: { 'content-type': 'application/json','Authorization':JSON.parse(body).access_token)}
+			  	headers: { 'content-type': 'application/json','Authorization':JSON.parse(body).access_token}
 				};
 			  request(options, function (error, response, body) {
 			  	if (error) throw new Error(error);
