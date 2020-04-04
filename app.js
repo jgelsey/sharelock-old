@@ -69,7 +69,7 @@ var strategy = new Auth0Strategy({
 		  headers: { 'content-type': 'application/json' },
 		  body: '{"client_id":"k61aR57GKAVqrTlLWWtGb12ktuGXwqjq","client_secret":"z-9gUMMRQ_-ZQmWUYYyTJiLyJt8-XOeLlrs0evi3d-ukahMksK3uXFwINJzHqUZf","audience":"https://dev-asqfrzuv.auth0.com/api/v2/","grant_type":"client_credentials"}' };
 
-		request(options, function (error, response, body) {
+		foo=request(options, function (error, response, body) {
 		  if (error) throw new Error(error);
 
 		  console.log("body is: ",body);
@@ -97,7 +97,7 @@ var strategy = new Auth0Strategy({
     return done(null, profile);
 });
 
-console.log("hello - request.profile: ",request.profile)
+console.log("hello - foo.profile: ",foo.profile)
 
 
 passport.use(strategy);
