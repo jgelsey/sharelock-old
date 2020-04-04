@@ -97,7 +97,7 @@ var strategy = new Auth0Strategy({
     return done(null, profile);
 });
 
-console.log("hello - strategy.profile: ",strategy.profile)
+console.log("hello - strategy: ",strategy)
 
 
 passport.use(strategy);
