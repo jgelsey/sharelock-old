@@ -48,7 +48,7 @@ var strategy = new Auth0Strategy({
     redirectUri: process.env.Auth0_CALLBACK_URL, 
     audience: 'https://' + process.env.AUTH0_DOMAIN + '/userinfo',
     responseType: 'code',
-    scope: 'openid profile'
+    scope: 'openid profile email'
 }, function(accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
     // extraParams.id_token has the JSON Web Token
@@ -57,6 +57,21 @@ var strategy = new Auth0Strategy({
     console.log("done"); 
     console.log("hello -- profile: ",profile);
     console.log("done");
+
+    // get the JWT that includes the user profile
+	var request = require("request");
+
+	var options = { method: 'POST',
+	  url: 'https://dev-asqfrzuv.auth0.com/oauth/token',
+	  headers: { 'content-type': 'application/json' },
+	  body: '{"client_id":"k61aR57GKAVqrTlLWWtGb12ktuGXwqjq","client_secret":"z-9gUMMRQ_-ZQmWUYYyTJiLyJt8-XOeLlrs0evi3d-ukahMksK3uXFwINJzHqUZf","audience":"https://dev-asqfrzuv.auth0.com/api/v2/","grant_type":"client_credentials"}' };
+
+	request(options, function (error, response, body) {
+	  if (error) throw new Error(error);
+
+	  console.log("JWT is: ",body);
+	});
+
  //    console.log("domain: ",process.env.AUTH0_DOMAIN,"clientID: ",process.env.AUTH0_CLIENT_ID, "callbackURL: ", process.env.AUTH0_CALLBACK);
 	// console.log("done");
 
@@ -79,10 +94,6 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
   done(null, user);
 });
-
-console.log("passport object: ", passport);
-console.log("done");
-
 
 var app = express();
 
