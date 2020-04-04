@@ -112,7 +112,7 @@ passport.deserializeUser(function(user, done) {
 });
 
 console.log("hello - strategy: ",strategy)
-console.log("hello - user after serialize: ", user)
+console.log("hello - req.user after serialize: ", req.user)
 
 var app = express();
 
