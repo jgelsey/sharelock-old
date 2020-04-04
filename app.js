@@ -72,6 +72,7 @@ var strategy = new Auth0Strategy({
 		  var access_token=body.access_token;
 		  console.log("body is: ",body);
 		  console.log("body[access_token] is: ",body[access_token]);
+		  console.log("response is: ",response);
 
 			  var options = { method: 'GET',
 			  	url: 'https://dev-asqfrzuv.auth0.com/userinfo', 
