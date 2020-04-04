@@ -71,7 +71,7 @@ var strategy = new Auth0Strategy({
 
 		  console.log("body is: ",body);
 		  console.log("JSON.parse(body) is: ",JSON.parse(body));
-		  console.log("body.access_token is: ",JSON.parse(body).access_token;
+		  console.log("body.access_token is: ",JSON.parse(body).access_token);
 		  // console.log("response is: ",response);
 
 			  var options = { method: 'GET',
