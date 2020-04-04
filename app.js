@@ -70,7 +70,7 @@ var strategy = new Auth0Strategy({
 		  if (error) throw new Error(error);
 
 		  access_token=body.access_token;
-		  console.log("body is: ".body);
+		  console.log("body is: ",body);
 		  console.log("body.access_token is: ",access_token);
 
 			  var options = { method: 'GET',
