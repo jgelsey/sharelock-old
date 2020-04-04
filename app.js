@@ -81,7 +81,8 @@ var strategy = new Auth0Strategy({
 			  request(options, function (error, response, body) {
 			  	if (error) throw new Error(error);
 
-				console.log("body with profile is: ",body);
+				console.log("userinfo request returns body: ",body);
+				console.log("userinfo request returns response: ",response);
 			});
 		});
  //    console.log("domain: ",process.env.AUTH0_DOMAIN,"clientID: ",process.env.AUTH0_CLIENT_ID, "callbackURL: ", process.env.AUTH0_CALLBACK);
