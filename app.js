@@ -59,35 +59,7 @@ var strategy = new Auth0Strategy({
     console.log("done");
 
     // get the JWT that includes the user profile
-	var request = require("request");
-
-	var options = { method: 'POST',
-	  url: 'https://dev-asqfrzuv.auth0.com/oauth/token',
-	  headers: { 'content-type': 'application/json' },
-	  body: '{"client_id":"k61aR57GKAVqrTlLWWtGb12ktuGXwqjq","client_secret":"z-9gUMMRQ_-ZQmWUYYyTJiLyJt8-XOeLlrs0evi3d-ukahMksK3uXFwINJzHqUZf","audience":"https://dev-asqfrzuv.auth0.com/api/v2/","grant_type":"client_credentials"}' };
-
-	request(options, function (error, response, body) {
-	  if (error) throw new Error(error);
-
-	  console.log("JWT is: ",body);
-	  access_token=body.access_token;
-
-	  var options = { method: 'GET',
-	  	url: 'https://dev-asqfrzuv.auth0.com/userinfo', 
-	  	headers: { 'content-type': 'application/json','Authorization':access_token} };
-	  request(options, function (error, response, body) {
-	  	if (error) throw new Error(error);
-
-		console.log("body with prfile is: ",body);
-		};
-	};
-
-
- //    console.log("domain: ",process.env.AUTH0_DOMAIN,"clientID: ",process.env.AUTH0_CLIENT_ID, "callbackURL: ", process.env.AUTH0_CALLBACK);
-	// console.log("done");
-
-// 	//got the user profile
-// done with setting up Auth0 APi vars
+	
 
     return done(null, profile);
 });
