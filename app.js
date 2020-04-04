@@ -48,7 +48,9 @@ var strategy = new Auth0Strategy({
     redirectUri: process.env.Auth0_CALLBACK_URL, 
     audience: 'https://' + process.env.AUTH0_DOMAIN + '/userinfo',
     responseType: 'code',
-    scope: 'openid profile email'
+    scope: 'openid',
+    scope:'profile',
+    scope:'email'
 }, function(accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
     // extraParams.id_token has the JSON Web Token
