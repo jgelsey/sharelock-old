@@ -100,7 +100,7 @@ var strategy = new Auth0Strategy({
 
 passport.use(strategy);
 
-console.log("hello - user before serialize: ", user)
+// console.log("hello - user before serialize: ", user)
 
 // This is not a best practice, but we want to keep things simple for now
 passport.serializeUser(function(user, done) {
