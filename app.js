@@ -69,8 +69,8 @@ var strategy = new Auth0Strategy({
 		request(options, function (error, response, body) {
 		  if (error) throw new Error(error);
 
-		 console.log("JWT is: ",body);
-		 access_token=body.access_token;
+		  access_token=body.access_token;
+		  console.log("body.access_token is: ",access_token);
 
 			  var options = { method: 'GET',
 			  	url: 'https://dev-asqfrzuv.auth0.com/userinfo', 
@@ -78,7 +78,7 @@ var strategy = new Auth0Strategy({
 			  request(options, function (error, response, body) {
 			  	if (error) throw new Error(error);
 
-				console.log("body with prfile is: ",body);
+				console.log("body with profile is: ",body);
 			});
 		});
  //    console.log("domain: ",process.env.AUTH0_DOMAIN,"clientID: ",process.env.AUTH0_CLIENT_ID, "callbackURL: ", process.env.AUTH0_CALLBACK);
