@@ -64,7 +64,7 @@ var strategy = new Auth0Strategy({
 	var options = { method: 'POST',
 	  url: 'https://dev-asqfrzuv.auth0.com/oauth/token',
 	  headers: { 'content-type': 'application/json' },
-	  body: '{"client_id":"k61aR57GKAVqrTlLWWtGb12ktuGXwqjq","client_secret":"z-9gUMMRQ_-ZQmWUYYyTJiLyJt8-XOeLlrs0evi3d-ukahMksK3uXFwINJzHqUZf","audience":"https://dev-asqfrzuv.auth0.com/api/v2/","grant_type":"client_credentials"}' };
+	  body: '{"client_id":"k61aR57GKAVqrTlLWWtGb12ktuGXwqjq","client_secret":"z-9gUMMRQ_-ZQmWUYYyTJiLyJt8-XOeLlrs0evi3d-ukahMksK3uXFwINJzHqUZf","audience":"https://dev-asqfrzuv.auth0.com/api/v2/","grant_type":"client_credentials","scope":"openid profile email"}' };
 
 	request(options, function (error, response, body) {
 	  if (error) throw new Error(error);
