@@ -97,10 +97,10 @@ var strategy = new Auth0Strategy({
     return done(null, profile);
 });
 
-console.log("hello - strategy: ",strategy)
-
 
 passport.use(strategy);
+
+console.log("hello - user before serialize: ", user)
 
 // This is not a best practice, but we want to keep things simple for now
 passport.serializeUser(function(user, done) {
@@ -110,6 +110,9 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
   done(null, user);
 });
+
+console.log("hello - strategy: ",strategy)
+console.log("hello - user after serialize: ", user)
 
 var app = express();
 
