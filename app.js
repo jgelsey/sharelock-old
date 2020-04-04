@@ -71,12 +71,14 @@ var strategy = new Auth0Strategy({
 
 		  console.log("body is: ",body);
 		  console.log("JSON.parse(body) is: ",JSON.parse(body));
+		  ac
 		  console.log("body.access_token is: ",JSON.parse(body).access_token);
 		  // console.log("response is: ",response);
 
 			  var options = { method: 'GET',
 			  	url: 'https://dev-asqfrzuv.auth0.com/userinfo', 
-			  	headers: { 'content-type': 'application/json','Authorization':access_token}};
+			  	headers: { 'content-type': 'application/json','Authorization':JSON.parse(body).access_token)}
+				};
 			  request(options, function (error, response, body) {
 			  	if (error) throw new Error(error);
 
