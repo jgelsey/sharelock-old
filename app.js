@@ -48,9 +48,7 @@ var strategy = new Auth0Strategy({
     // redirectUri: process.env.Auth0_CALLBACK_URL, 
     // audience: 'https://' + process.env.AUTH0_DOMAIN + '/userinfo',
     // responseType: 'code',
-    scope: "openid email profile",
-    profile: true
-  
+    scope: "openid email profile"
 }, function(accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
     // extraParams.id_token has the JSON Web Token
@@ -60,6 +58,10 @@ var strategy = new Auth0Strategy({
     console.log("hello -- profile: ",profile);
     console.log("done");
     console.log("hello -- extraParams: ",extraParams);
+    console.log("done");
+    console.log("hello - refreshToken: ", refreshToken);
+    console.log("done");
+    console.log("hello -- done: ",done);
     console.log("done");
 
     // get the JWT that includes the user profile
