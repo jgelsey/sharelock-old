@@ -39,13 +39,8 @@
     "ejs": "^2.5.7",
     "express": "^4.17.1",
     "express-session": "^1.15.6",
-<<<<<<< HEAD
-    "passport": "^0..0",
-    "passport-auth0": "^0.9.1",
-=======
-    "passport": "^0.7.0",
+    "passport": "^0.9.0",
     "passport-auth0": "^0.8.1",
->>>>>>> f4f2fc93047414e19ca3aec394db59077d14cdee
     "serve-favicon": "^2.4.5",
     "swig": "^1.4.2"
   },
