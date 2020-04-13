@@ -39,8 +39,8 @@
     "ejs": "^2.5.7",
     "express": "^4.17.1",
     "express-session": "^1.15.6",
-    "passport": "^0.4.0",
-    "passport-auth0": "^0.6.1",
+    "passport": "^0..0",
+    "passport-auth0": "^0.7.1",
     "serve-favicon": "^2.4.5",
     "swig": "^1.4.2"
   },
