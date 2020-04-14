@@ -22,22 +22,88 @@ var provider_friendly_name = {
     'github': 'GitHub',
     'yahoo': 'Yahoo'
 };
+	
+// var request = require("request");
+
+// var options = { method: 'POST',
+//   url: 'https://dev-asqfrzuv.auth0.com/oauth/token',
+//   headers: { 'content-type': 'application/json' },
+//   body: '{"client_id":"P1qX71GFDImhVcIAXYcKz0C9MegNAG7O","client_secret":"C1TgDiGZSqda1aMlKsoR9G7b-6ymLqMBucRibGiGhQfBiUw6jqTqTIPGxeBwaBOU","audience":"https://dev-asqfrzuv.auth0.com/api/v2/","grant_type":"client_credentials"}' };
+
+// foo=request(options, function (error, response, body) {
+//   if (error) throw new Error(error);
+
+//   console.log("API call body is: ",body);
+//   console.log("API call response.body is: ",response.body);
+
+// });
+
+// console.log("foo is: ",foo);
 
 var strategy = new Auth0Strategy({
     domain: process.env.AUTH0_DOMAIN,
     clientID: process.env.AUTH0_CLIENT_ID,
     clientSecret: process.env.AUTH0_CLIENT_SECRET,
     callbackURL: process.env.AUTH0_CALLBACK,
-    redirectUri: process.env.AUTH0_CALLBACK,    // <!-- upgrade to Lock 9 -->
-    scope: "openid email"                       // <!-- upgrade to Lock 9 -->
+    // redirectUri: process.env.Auth0_CALLBACK_URL, 
+    // audience: 'https://' + process.env.AUTH0_DOMAIN + '/userinfo',
+    // responseType: 'code',
+    scope: "openid email profile"
 }, function(accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
     // extraParams.id_token has the JSON Web Token
     // profile has all the information from the user
+    console.log("hello - accessToken: ",accessToken);
+    console.log("done"); 
+    console.log("hello -- profile: ",profile);
+    console.log("done");
+    console.log("hello -- extraParams: ",extraParams);
+    console.log("done");
+    console.log("hello - refreshToken: ", refreshToken);
+    console.log("done");
+    console.log("hello -- done: ",done);
+    console.log("done");
+
+    // get the JWT that includes the user profile
+		var request = require("request");
+
+		var options = { method: 'POST',
+		  url: 'https://dev-asqfrzuv.auth0.com/oauth/token',
+		  headers: { 'content-type': 'application/json' },
+		  body: '{"client_id":"k61aR57GKAVqrTlLWWtGb12ktuGXwqjq","client_secret":"z-9gUMMRQ_-ZQmWUYYyTJiLyJt8-XOeLlrs0evi3d-ukahMksK3uXFwINJzHqUZf","audience":"https://dev-asqfrzuv.auth0.com/api/v2/","grant_type":"client_credentials"}' };
+
+		foo=request(options, function (error, response, body) {
+		  if (error) throw new Error(error);
+
+		  console.log("body is: ",body);
+		  console.log("JSON.parse(body) is: ",JSON.parse(body));
+		  console.log("body.access_token is: ",JSON.parse(body).access_token);
+		  // console.log("response is: ",response);
+
+			  var options = { method: 'GET',
+			  	url: 'https://dev-asqfrzuv.auth0.com/userinfo', 
+			  	headers: { 'content-type': 'application/json','Authorization': 'Bearer '+ accessToken} //JSON.parse(body).access_token}
+				};
+			  request(options, function (error, response, body) {
+			  	if (error) throw new Error(error);
+
+				console.log("userinfo request returns body: ",body);
+				// console.log("userinfo request returns response: ",response);
+			});
+		});
+ //    console.log("domain: ",process.env.AUTH0_DOMAIN,"clientID: ",process.env.AUTH0_CLIENT_ID, "callbackURL: ", process.env.AUTH0_CALLBACK);
+	// console.log("done");
+
+// 	//got the user profile
+// done with setting up Auth0 APi vars
+
     return done(null, profile);
 });
 
+
 passport.use(strategy);
+
+// console.log("hello - user before serialize: ", user)
 
 // This is not a best practice, but we want to keep things simple for now
 passport.serializeUser(function(user, done) {
@@ -48,7 +114,11 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
+// console.log("hello - strategy: ",strategy)
+
 var app = express();
+
+// console.log("hello xyz");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -99,6 +169,9 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public'), { index: false, redirect: false }));
 app.use(contextualLocals);
 
+// console.log("hello -- passport from Auth0 strategy: ", passport);
+
+
 app.get('/', function (req, res, next) {
     res.render('home.html');
 });
@@ -137,6 +210,10 @@ app.get('/callback',
         if (!req.user)
             res.send(403);
         else {
+        	console.log("req.user: ",req.user);
+			console.log("done");
+			// console.log("res");
+			// console.log("done"); 
             var url = req.session.bookmark || '/';
             delete req.session.bookmark;
             res.redirect(url);
@@ -165,6 +242,8 @@ app.post('/create',
 //     }
 //     next();
 // });
+
+
 
 app.get(/^\/(\w{1,10})\/(.+)$/,
     v1_get());
@@ -316,8 +395,11 @@ function v1_get() {
 
         logger.info({ user: req.user ? req.user._json : undefined }, 'sharelock access request');
 
+
         if (req.user && req.user.provider !== 'twitter' && !req.user._json.email_verified) {
-            return res.render('invalid', { details: 'Your e-mail has not been verified'});
+        	console.log("hello -- req.user ", req.user);
+        	console.log("done");
+            return res.render('invalid', { details: 'Your e-mail has not been verified xxyyyz'});
         }
 
         var request_keys;
